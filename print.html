@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Python语言程序设计</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,24 +62,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -117,9 +122,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -225,6 +230,1321 @@ web-based installer表示通过网络安装的，也就是说下载到的是一�
 <div style="break-before: page; page-break-before: always;"></div><h1 id="版本语法糖"><a class="header" href="#版本语法糖">版本语法糖</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="google编码风格"><a class="header" href="#google编码风格">Google编码风格</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="数据类型理论"><a class="header" href="#数据类型理论">数据类型理论</a></h1>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E6%A6%82%E8%A7%88">概览</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#python%E5%8F%98%E9%87%8F%E7%9A%84%E6%8C%87%E9%92%88%E6%9C%AC%E8%B4%A8">Python变量的指针本质</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E7%9A%84%E4%BC%A0%E9%80%92">函数参数的传递</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2">字符串</a>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%BC%95%E5%8F%B7">字符串和引号</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5">字符串拼接</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8D%E5%8F%AF%E6%9B%B4%E6%94%B9">字符串不可更改</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E7%94%A8innot-in%E5%88%A4%E6%96%AD%E5%AD%90%E4%B8%B2">用in、not in判断子串</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%9A%84%E8%BD%AC%E6%8D%A2">字符串和数的转换</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6">字符串的转义字符</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%88%87%E7%89%87">字符串的切片</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%88%86%E5%89%B2">字符串的分割</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%BD%E6%95%B0">字符串的函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96">字符串的格式化</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AE%9E%E4%BE%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%BE%8B%E9%A2%98%E5%A4%A7%E5%B0%8F%E5%86%99%E5%AD%97%E6%AF%8D%E4%BA%92%E6%8D%A2">实例：字符串例题——大小写字母互换</a></li>
+</ul>
+</li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8">列表</a>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E7%9A%84%E6%93%8D%E4%BD%9C%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5">列表的操作——增删改查</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87%E5%8F%8A%E9%81%8D%E5%8E%86">列表切片及遍历</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%BA%94%E7%94%A8%E4%BE%8B%E9%A2%98%E6%A0%A1%E9%97%A8%E5%A4%96%E7%9A%84%E6%A0%91">应用例题：校门外的树</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E7%9A%84%E6%9C%B4%E7%B4%A0%E6%8E%92%E5%BA%8F%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F">列表的朴素排序——选择排序</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E7%94%A8%E6%8E%92%E5%BA%8F%E5%87%BD%E6%95%B0%E5%AF%B9%E7%AE%80%E5%8D%95%E5%88%97%E8%A1%A8%E6%8E%92%E5%BA%8F">用排序函数对简单列表排序</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%A4%8D%E6%9D%82%E5%88%97%E8%A1%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8E%92%E5%BA%8F">复杂列表的自定义排序</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#lambda%E5%87%BD%E6%95%B0">lambda函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0">列表相关函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#map%E5%87%BD%E6%95%B0">map函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#filter%E5%87%BD%E6%95%B0">filter函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E7%94%9F%E6%88%90%E5%BC%8F">列表生成式</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E4%BA%8C%E7%BB%B4%E5%88%97%E8%A1%A8">二维列表</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E7%9A%84%E6%8B%B7%E8%B4%9D%E5%92%8C%E8%BD%AC%E6%8D%A2">列表的拷贝和转换</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%BB%84%E4%BA%92%E8%BD%AC">列表和元组互转</a></li>
+</ul>
+</li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%85%83%E7%BB%84">元组</a>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AE%9E%E4%BE%8B%E4%B8%87%E5%B9%B4%E5%8E%86">实例：万年历</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%85%83%E7%BB%84%E7%94%9F%E6%88%90%E5%BC%8F">元组生成式</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AE%9A%E4%B9%89%E4%BA%8C%E7%BB%B4%E5%85%83%E7%BB%84">定义二维元组</a></li>
+</ul>
+</li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E5%85%B8">字典</a>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E5%85%B8%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">字典的基本概念</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E5%85%B8%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0">字典相关函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AD%97%E5%85%B8%E4%BE%8B%E9%A2%98%E8%AF%8D%E9%A2%91%E7%BB%9F%E8%AE%A1">字典例题：词频统计</a></li>
+</ul>
+</li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E9%9B%86%E5%90%88">集合</a>
+<ul>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0">集合常用函数</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">集合运算</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E9%9B%86%E5%90%88%E4%BE%8B%E9%A2%98%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%90%8C%E5%8D%95%E8%AF%8D%E6%95%B0%E9%87%8F">集合例题：统计不同单词数量</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E7%A8%8B%E5%BA%8F%E6%88%96%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6">程序或算法的时间复杂度</a></li>
+<li><a href="%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%90%86%E8%AE%BA.html#%E5%AE%9E%E4%BE%8B%E6%89%BE%E5%87%BA%E5%87%BA%E7%8E%B0%E6%AC%A1%E6%95%B0%E6%9C%80%E5%B0%91%E7%9A%84%E6%95%B0">实例：找出出现次数最少的数</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="概览"><a class="header" href="#概览">概览</a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101938432.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101939828.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101940116.png" alt="" /></p>
+<h2 id="python变量的指针本质"><a class="header" href="#python变量的指针本质">Python变量的指针本质</a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101942257.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101944254.png" alt="" /></p>
+<pre><code class="language-python">a = [1, 2, 3, 4]  
+b = [1, 2, 3, 4]  
+print(a is b)   #False  
+print(a == b)   #True  
+c = a  
+print(a is c)   #True  
+print(a == c)   #True
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101951222.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101952716.png" alt="" /></p>
+<h2 id="函数参数的传递"><a class="header" href="#函数参数的传递">函数参数的传递</a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310101957783.png" alt="" /></p>
+<pre><code class="language-python">def Swap(x,y):  
+    tmp = y  
+    y = x  
+    x = tmp  
+a = 4  
+b = 5  
+Swap(a,b)  
+print(a,b)#4 5
+</code></pre>
+<p>a，b指向的地址对应的值没有改变。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102007274.png" alt="" /></p>
+<pre><code class="language-python">def Swap(x,y):  
+    tmp = y[0]  
+    y[0] = x[0]  
+    x[0] = tmp  
+a = [4,5]  
+b = [6,7]  
+Swap(a,b)  
+print(a,b)#[6, 5] [4, 7]
+</code></pre>
+<h2 id="字符串"><a class="header" href="#字符串">字符串</a></h2>
+<h3 id="字符串和引号"><a class="header" href="#字符串和引号">字符串和引号</a></h3>
+<p>字符串：可以且必须用单引号、双引号或<code>三单引号</code>括起来，字符串里面不会包含变量。字符串必须用引号括起来，用引号括起来的就是字符串。</p>
+<pre><code class="language-python">print('''I said: 'he said &quot;hello&quot;'.''')
+</code></pre>
+<p>输出<code>I said: 'he said &quot;hello&quot;'.</code></p>
+<p>改变一下也行：</p>
+<pre><code class="language-python">print('''I said: &quot;he said 'hello'&quot;.''')
+</code></pre>
+<p>输出<code>I said: &quot;he said 'hello'&quot;.</code></p>
+<p>也可以是使用转义字符：</p>
+<pre><code class="language-python">print('I said: \&quot;he said \'hello\'\&quot;.')
+</code></pre>
+<p>输出结果：<code>I said: &quot;he said 'hello'&quot;.</code></p>
+<pre><code class="language-python">print(&quot;this \  
+is \  
+good&quot;)
+</code></pre>
+<p>代码比较长时，为了方便阅读，可以加<code>\</code></p>
+<p>输出<code>this is good</code></p>
+<p>三双引号字符串中可以包含换行符、制表符以及其他字符。</p>
+<pre><code class="language-python">para_str=&quot;&quot;&quot;  
+多行字符串可以使用制表符  
+TAB (\t)。  
+也可以使用换行符 [\n]。  
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;  
+Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;  
+&lt;BODY&gt;&lt;H3&gt;ERROR&lt;/H3&gt;  
+&lt;FROM&gt;&lt;INPUT TYPE=button VALUE=Back  
+ONCLICK=&quot;window.history.back()&quot;&gt;&lt;/FROM&gt;  
+&lt;/BODY&gt;&lt;/HTML&gt;  
+&quot;&quot;&quot;  
+print(para_str)
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code class="language-python">多行字符串可以使用制表符
+TAB (	)。
+也可以使用换行符 [
+]。
+&lt;HTML&gt;&lt;HEAD&gt;&lt;TITLE&gt;
+Friends CGI Demo&lt;/TITLE&gt;&lt;/HEAD&gt;
+&lt;BODY&gt;&lt;H3&gt;ERROR&lt;/H3&gt;
+&lt;FROM&gt;&lt;INPUT TYPE=button VALUE=Back
+ONCLICK=&quot;window.history.back()&quot;&gt;&lt;/FROM&gt;
+&lt;/BODY&gt;&lt;/HTML&gt;
+</code></pre>
+<h3 id="索引"><a class="header" href="#索引">索引</a></h3>
+<p>有n个字符的字符串，其中的每个字符都是长度为1的字符串：</p>
+<p>从左往右依次编号为0，1，2，...，n-1</p>
+<p>从右往左依次编号为-1，-2，...，-n</p>
+<h3 id="字符串拼接"><a class="header" href="#字符串拼接">字符串拼接</a></h3>
+<p>可以用&quot;+&quot;连接字符串</p>
+<pre><code class="language-python">a=&quot;ABCD&quot;  
+a=a+a[1]  
+print(a)#ABCDB
+</code></pre>
+<h3 id="字符串不可更改"><a class="header" href="#字符串不可更改">字符串不可更改</a></h3>
+<p>不可以修改字符串中的字符</p>
+<p>例如下面的例子会报错<code>TypeError: 'str' object does not support item assignment</code></p>
+<pre><code class="language-python">a=&quot;ABCD&quot;;a[2]='k';print(a)
+</code></pre>
+<h3 id="用innot-in判断子串"><a class="header" href="#用innot-in判断子串">用in、not in判断子串</a></h3>
+<pre><code class="language-python">a=&quot;Hello&quot;  
+b=&quot;Python&quot;  
+print(&quot;el&quot; in a)  
+print(&quot;th&quot; not in b)  
+print(&quot;lot&quot; in a)
+</code></pre>
+<pre><code>True
+False
+False
+</code></pre>
+<h3 id="字符串和数的转换"><a class="header" href="#字符串和数的转换">字符串和数的转换</a></h3>
+<ul>
+<li>int(x)：把字符串转换成整数</li>
+<li>float(x)：把字符串x转换成小数</li>
+<li>str(x)：把x转换成字符串</li>
+<li>eval(x)：把字符串x看作一个Python表达式，求其值</li>
+</ul>
+<p>注：初学者程序出现runtime error，多半是由于做了不合法的转换，如int(x)，而x为&quot;a12&quot;或&quot;12.34&quot;</p>
+<pre><code class="language-python">x=&quot;123&quot;  
+print(int(x))  
+print(float(x))  
+  
+y=&quot;1+2+3&quot;  
+print(eval(y))
+</code></pre>
+<pre><code>123
+123.0
+6
+</code></pre>
+<p>程序修改后如下：</p>
+<pre><code class="language-python">x=&quot;a123&quot;  
+print(int(x))  
+print(float(x))  
+  
+y=&quot;1+2+3&quot;  
+print(eval(y))
+</code></pre>
+<p>报错信息：</p>
+<pre><code>File &quot;E:\python\test.py&quot;, line 2, in &lt;module&gt;
+    print(int(x))
+ValueError: invalid literal for int() with base 10: 'a123'
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202309221836516.png" alt="" /></p>
+<h3 id="字符串的转义字符"><a class="header" href="#字符串的转义字符">字符串的转义字符</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102013034.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102019226.png" alt="" /></p>
+<pre><code class="language-python">print(&quot;hello\nworld\tok\&quot;1\\2&quot;)  
+print(r'ab\ncd')
+</code></pre>
+<pre><code>hello
+world	ok&quot;1\2
+ab\ncd
+</code></pre>
+<h3 id="字符串的切片"><a class="header" href="#字符串的切片">字符串的切片</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102021166.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102023786.png" alt="" /></p>
+<pre><code class="language-python">print(&quot;abcde&quot;[::-1])     #edcba
+</code></pre>
+<h3 id="字符串的分割"><a class="header" href="#字符串的分割">字符串的分割</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102044584.png" alt="" /></p>
+<pre><code class="language-python">a = &quot;12..34.5346...a&quot;  
+  
+print(a.split('..'))  
+print(a.split('.'))  
+print(a.split(&quot;34&quot;))
+</code></pre>
+<pre><code>['12', '34.5346', '.a']
+['12', '', '34', '5346', '', '', 'a']
+['12..', '.5', '6...a']
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102046391.png" alt="" /></p>
+<pre><code class="language-python">import re  
+a = 'Beautiful, is; better*than\nugly'  
+print(re.split(&quot;;| |,|\*|\n|&quot;,a))  
+print(re.split('|',a))  
+print(re.split(';| |,|\*|\n',a))
+</code></pre>
+<pre><code>['', 'B', 'e', 'a', 'u', 't', 'i', 'f', 'u', 'l', '', '', 'i', 's', '', '', 'b', 'e', 't', 't', 'e', 'r', '', 't', 'h', 'a', 'n', '', 'u', 'g', 'l', 'y', '']
+['', 'B', 'e', 'a', 'u', 't', 'i', 'f', 'u', 'l', ',', ' ', 'i', 's', ';', ' ', 'b', 'e', 't', 't', 'e', 'r', '*', 't', 'h', 'a', 'n', '\n', 'u', 'g', 'l', 'y', '']
+['Beautiful', '', 'is', '', 'better', 'than', 'ugly']
+</code></pre>
+<p>两个相邻分隔串之间会有一个空格</p>
+<h3 id="字符串的函数"><a class="header" href="#字符串的函数">字符串的函数</a></h3>
+<p>1.count函数——求子串出现次数</p>
+<pre><code class="language-python">a = &quot;ThisAA..bbAA&quot;  
+print(a.count('AA'))  #2
+</code></pre>
+<p>2.len函数——求字符串长度</p>
+<pre><code class="language-python">a = &quot;ThisAA..bbAA&quot;  
+print(len(a))  #12
+</code></pre>
+<p>3.upper和lower函数——大小写转换，返回新的字符串</p>
+<pre><code class="language-python">a = &quot;ThisAA..bbAA&quot;  
+print(a.upper())  #THISAA..BBAA  
+print(a)      #ThisAA..bbAA
+</code></pre>
+<p>4.find、rfind、index、rindex函数——查找</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102106636.png" alt="" /></p>
+<pre><code class="language-python">s = &quot;1234abc567abc12&quot;  
+print(s.find(&quot;ab&quot;))  
+print(s.rfind(&quot;ab&quot;))  
+try:  
+    print(s.index(&quot;ab&quot;))  
+except Exception as e:  
+    print(e)
+</code></pre>
+<pre><code>4
+10
+4
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102112095.png" alt="" /></p>
+<p>5.replace函数——替换</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102115690.png" alt="" /></p>
+<pre><code class="language-python">s = &quot;1234abc567abc12&quot;  
+b = s.replace(&quot;abc&quot;,&quot;EFGH&quot;)  
+print(s)  
+print(b)  
+print(s.replace(&quot;abc&quot;,&quot;&quot;))
+</code></pre>
+<pre><code>1234abc567abc12
+1234EFGH567EFGH12
+123456712
+</code></pre>
+<pre><code class="language-python">print(&quot;123.4&quot;.isdigit())  #False
+print(&quot;123&quot;.isdigit())  #True
+print(&quot;a123.4&quot;.isdigit())  #False
+print(&quot;Ab123&quot;.islower())  #False
+print(&quot;ab123.4&quot;.islower())  #True
+print(&quot;ab1234&quot;.islower())   #True
+</code></pre>
+<pre><code class="language-python">print(&quot;abcd&quot;.startswith(&quot;ab&quot;)) #True  
+print(&quot;abcd&quot;.startswith(&quot;bcd&quot;)) #False  
+print(&quot;abcd&quot;.endswith(&quot;bcd&quot;)) #True  
+print(&quot;abcd&quot;.endswith(&quot;bed&quot;)) #False
+</code></pre>
+<p>6.strip()函数——去除空白字符</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102124230.png" alt="" /></p>
+<pre><code class="language-python">print(&quot; \t12 34 \n &quot;.strip())  
+print(&quot; \t12 34 5 &quot;.lstrip())
+</code></pre>
+<pre><code>12 34
+12 34 5 
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102127562.png" alt="" /></p>
+<pre><code class="language-python">print(&quot;takeab \n&quot;.strip(&quot;ba \n&quot;))  
+print(&quot;cd\t12 34 5 &quot;.strip(&quot;d\tc&quot;))
+</code></pre>
+<pre><code>take
+12 34 5 
+</code></pre>
+<h3 id="字符串的格式化"><a class="header" href="#字符串的格式化">字符串的格式化</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310102134665.png" alt="" /></p>
+<pre><code class="language-python">print(chr(22900))  
+print(ord(&quot;好&quot;))
+</code></pre>
+<pre><code>奴
+22909
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112041274.png" alt="" /></p>
+<pre><code class="language-python">x = &quot;Hello {0} {1:10},you get ${2:0.4f}&quot;.format(&quot;Mr.&quot;,&quot;Jack&quot;,3.2)  
+print(x)  
+x = &quot;Hello {0} {1:10},you get ${2:10.4f}&quot;.format(&quot;Mr.&quot;,&quot;Jack&quot;,3.2)  
+print(x)  
+x = &quot;Hello {0} {1:&gt;10},you get ${2:0.4f}&quot;.format(&quot;Mr.&quot;,&quot;Jack&quot;,3.2)  
+print(x)  
+x = &quot;Hello {0} {0:&gt;10},you get ${2:0.4f}&quot;.format(&quot;Mr.&quot;,&quot;Jack&quot;,3.2)  
+print(x)
+</code></pre>
+<pre><code>Hello Mr. Jack      ,you get $3.2000
+Hello Mr. Jack      ,you get $    3.2000
+Hello Mr.       Jack,you get $3.2000
+Hello Mr.        Mr.,you get $3.2000
+</code></pre>
+<pre><code class="language-python">print(&quot;Today is %s.%d&quot;%('May',21))
+</code></pre>
+<pre><code>Today is May.21
+</code></pre>
+<h3 id="实例字符串例题大小写字母互换"><a class="header" href="#实例字符串例题大小写字母互换">实例：字符串例题——大小写字母互换</a></h3>
+<pre><code class="language-python">s = input()  
+for x in s:  
+    if 'a'&lt;=x&lt;='z':  
+        print(chr(ord(x)-32), end=&quot;&quot;)  
+    elif 'A'&lt;=x&lt;='Z':  
+        print(chr(ord(x)+32),end=&quot;&quot;)  
+    else:  
+        print(x,end=&quot;&quot;)
+</code></pre>
+<h2 id="列表"><a class="header" href="#列表">列表</a></h2>
+<p><code>empty=[]</code>表示空表</p>
+<p>列表中的元素可以修改</p>
+<pre><code class="language-python">empty=[]  
+empty[0]='baobao'  
+print(empty[0])
+</code></pre>
+<p>这会报错<code>IndexError: list assignment index out of range</code></p>
+<pre><code class="language-python">ls=['zhihu','heshang','baozi']  
+ls[0]='baobao'  
+print(ls[0])  
+print('baozi' in ls)
+</code></pre>
+<pre><code>baobao
+True
+</code></pre>
+<p>实例：输入两个整数求和</p>
+<pre><code class="language-python">s=input()  
+numbers=s.split()  #返回以字符串为元素的列表
+print(int(numbers[0])+int(numbers[1]))
+</code></pre>
+<pre><code>4 5
+9
+</code></pre>
+<p>若x是字符串，则<code>x.split()</code>的值是一个列表，包含字符串x经空格、制表符、换行符分隔得到的所有子串</p>
+<pre><code class="language-python">s=input()  
+numbers=s.split()  
+print(numbers)
+</code></pre>
+<pre><code>4 5
+['4', '5']
+</code></pre>
+<pre><code class="language-python">print(&quot;34\t\t45\n7&quot;.split())  
+print(&quot;ab cd ef&quot;.split())
+</code></pre>
+<pre><code>['34', '45', '7']
+['ab', 'cd', 'ef']
+</code></pre>
+<h3 id="列表的操作增删改查"><a class="header" href="#列表的操作增删改查">列表的操作——增删改查</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132026645.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132035109.png" alt="" /></p>
+<pre><code class="language-python">empty = []  
+list1 = ['PKU','Apple','2575']  
+list1[1] = 100  
+print(list1)  
+del list1[2]  
+print(list1)  
+print(id(list1))  
+list1 += [100,101]  
+list1.append(200)  
+print(list1)  
+print(id(list1))  
+list1.append([300,400])  
+print(list1)  
+a = ['a','b','c']  
+n = [1,2,3]  
+x = [a,n]  
+a[0] = 1  
+print(x)  
+print(x[0])  
+print(x[0][1])
+</code></pre>
+<pre><code>['PKU', 100, '2575']
+['PKU', 100]
+2920147022400
+['PKU', 100, 100, 101, 200]
+2920147022400
+['PKU', 100, 100, 101, 200, [300, 400]]
+[[1, 'b', 'c'], [1, 2, 3]]
+[1, 'b', 'c']
+b
+</code></pre>
+<p>id不变说明列表内容改变时没有新建一个列表</p>
+<p>append只能添加一个元素，添加一个列表需要用+</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132036324.png" alt="" /></p>
+<pre><code class="language-python">a = [1,2,3,4]  
+b = [5,6]  
+c = a + b  
+print(c)  #[1, 2, 3, 4, 5, 6]
+a[0] = 110  
+print(c) #[1, 2, 3, 4, 5, 6]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132040019.png" alt="" /></p>
+<pre><code class="language-python">b = a = [1,2]  
+a += [3,4]  #b和a指向相同地方，在a末尾添加元素，b也会受影响
+print(a)  
+print(b)  
+b = a = [1,2]  
+a = a + [3,4]  #对a重新赋值，不会影响到b
+print(a)  
+print(b)
+</code></pre>
+<pre><code>[1, 2, 3, 4]
+[1, 2, 3, 4]
+[1, 2, 3, 4]
+[1, 2]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132044065.png" alt="" /></p>
+<pre><code class="language-python">print([True]*3)  
+a = [1,2]  
+b = a * 3  
+print(b)  
+print([a*3])  
+c = [a] * 3  
+print(c)  
+a.append(3)  
+print(a)  
+print(b)  
+print(c)
+</code></pre>
+<pre><code>[True, True, True]
+[1, 2, 1, 2, 1, 2]
+[[1, 2, 1, 2, 1, 2]]
+[[1, 2], [1, 2], [1, 2]]
+[1, 2, 3]
+[1, 2, 1, 2, 1, 2]
+[[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+</code></pre>
+<p>下面是一道变态难题：</p>
+<pre><code class="language-python">a = [[0]] * 2 + [[0]]*2  
+a[0][0] = 5  
+print(a)
+</code></pre>
+<p>输出结果为<code>[[5], [5], [0], [0]]</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132053410.png" alt="" /></p>
+<p>下面的程序体现了Python数据的指针性。</p>
+<pre><code class="language-python">list1 = ['a', 'b', 'c']  
+list2 = list1  
+list1.append('de')  
+print(list2)
+</code></pre>
+<pre><code>['a', 'b', 'c', 'de']
+</code></pre>
+<h3 id="列表切片及遍历"><a class="header" href="#列表切片及遍历">列表切片及遍历</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132055856.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132057042.png" alt="" /></p>
+<pre><code class="language-python">lst = [1,2,3,4]  
+for x in lst:  
+    print(x,end=&quot; &quot;)  
+    x = 100  
+print(lst)  
+for i in range(len(lst)):  
+    lst[i] = 100  
+print(lst)
+</code></pre>
+<pre><code>1 2 3 4 [1, 2, 3, 4]
+[100, 100, 100, 100]
+</code></pre>
+<h3 id="应用例题校门外的树"><a class="header" href="#应用例题校门外的树">应用例题：校门外的树</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132133445.png" alt="" /></p>
+<p>样例输入：</p>
+<pre><code>500 3
+150 300
+100 200
+470 471
+</code></pre>
+<p>样例输出：298</p>
+<p>一共501棵树</p>
+<p>自己实现的代码如下：</p>
+<pre><code class="language-python">nums = input().split()  
+total, n = int(nums[0]), int(nums[1])  
+ls = [x for x in range(total)]  
+leftover = []  
+max, min = 0, 500  
+for i in range(n):  
+    s = input().split()  
+    left, right = int(s[0]),int(s[1])  
+    for m in range(left, right + 1):  
+        if ls[m-1] not in leftover:  
+            leftover.append(ls[m - 1])  
+print(501-len(leftover))
+</code></pre>
+<p>郭老师课上给出的代码如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310132138880.png" alt="" /></p>
+<pre><code class="language-python">nums = input().split()  
+total, n = int(nums[0]), int(nums[1])  
+good = [True] * (total + 1)  
+leftover = []  
+max, min = 0, 500  
+for i in range(n):  
+    s = input().split()  
+    left, right = int(s[0]),int(s[1])  
+    for m in range(left, right + 1):  
+        good[m] = False  
+print(sum(good))
+</code></pre>
+<h3 id="列表的朴素排序选择排序"><a class="header" href="#列表的朴素排序选择排序">列表的朴素排序——选择排序</a></h3>
+<pre><code class="language-python">def SelectionSort(a):  
+    n = len(a)  
+    for i in range(n-1):  
+        k = i  
+        for j in range(i+1,n):  
+            if a[i] &gt; a[j]:  
+                a[i], a[j] = a[j], a[i]  
+a = [5,4,3,2,1]  
+SelectionSort(a)  
+print(a) #[1, 2, 3, 4, 5]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152032216.png" alt="" /></p>
+<h3 id="用排序函数对简单列表排序"><a class="header" href="#用排序函数对简单列表排序">用排序函数对简单列表排序</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152034184.png" alt="" /></p>
+<pre><code class="language-python">a = [5,6,1,2,3]  
+print(a.sort()) #输出None  
+a = [5,6,1,2,3]  
+a.sort()  
+print(a)  
+a = [5,6,1,2,3]  
+b = sorted(a)  
+print(a)  
+print(b)  
+c = [33,25,34,12,3]  
+c.sort(reverse = True)  
+print(c)
+</code></pre>
+<pre><code>None
+[1, 2, 3, 5, 6]
+[5, 6, 1, 2, 3]
+[1, 2, 3, 5, 6]
+[34, 33, 25, 12, 3]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152043577.png" alt="" /></p>
+<pre><code class="language-python">students = [('Tom','A',15),('Jane','C',13),('Trump','B',14)]  
+students.sort()  
+print(students)
+</code></pre>
+<pre><code>[('Jane', 'C', 13), ('Tom', 'A', 15), ('Trump', 'B', 14)]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152043318.png" alt="" /></p>
+<pre><code class="language-python">def myKey(n):  
+    return n % 10  
+a = [25, 7, 16, 33, 4, 1, 2]  
+a.sort(key=myKey)  
+print(a)  
+b = sorted(&quot;This is a test string from Andrew&quot;.split(),key=str.lower)  
+print(b)
+</code></pre>
+<pre><code>[1, 2, 33, 4, 25, 16, 7]
+['a', 'Andrew', 'from', 'is', 'string', 'test', 'This']
+</code></pre>
+<h3 id="复杂列表的自定义排序"><a class="header" href="#复杂列表的自定义排序">复杂列表的自定义排序</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152055320.png" alt="" /></p>
+<pre><code class="language-python">students = [('John','A',14),('Tom','B',15),('Jane','C',16)]  
+students.sort(key = lambda x : x[2])  
+print(students)  
+students.sort(key = lambda x : x[0])  
+print(students)
+</code></pre>
+<pre><code>[('John', 'A', 14), ('Tom', 'B', 15), ('Jane', 'C', 16)]
+[('Jane', 'C', 16), ('John', 'A', 14), ('Tom', 'B', 15)]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152056769.png" alt="" /></p>
+<p>从图中（两个Mike）可以看出，Python的排序是稳定的排序</p>
+<h3 id="lambda函数"><a class="header" href="#lambda函数">lambda函数</a></h3>
+<pre><code class="language-python">k = lambda x,y : x + y  
+print(k(4,5))   #9
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152101041.png" alt="" /></p>
+<p>多级排序</p>
+<pre><code class="language-python">def f(x):  
+    return -x[2],x[1],x[0]  
+students = [('John','A',15),('Mike','C',19),('Wang','B',12),('Mike','B',12),  
+            ('Mike','C',12),('Mike','C',18),('Bob','D',10)]  
+students.sort(key = f)  
+print(students)
+</code></pre>
+<pre><code>[('Mike', 'C', 19), ('Mike', 'C', 18), ('John', 'A', 15), ('Mike', 'B', 12), ('Wang', 'B', 12), ('Mike', 'C', 12), ('Bob', 'D', 10)]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152109537.png" alt="" /></p>
+<pre><code class="language-python">def f(x):  
+    return -x[2],x[1],x[0]  
+students = (('John','A',15),('Mike','C',19),('Wang','B',12),('Mike','B',12),  
+            ('Mike','C',12),('Mike','C',18),('Bob','D',10))  
+a = sorted(students,key=f)  
+print(a)
+</code></pre>
+<pre><code>[('Mike', 'C', 19), ('Mike', 'C', 18), ('John', 'A', 15), ('Mike', 'B', 12), ('Wang', 'B', 12), ('Mike', 'C', 12), ('Bob', 'D', 10)]
+</code></pre>
+<h3 id="列表相关函数"><a class="header" href="#列表相关函数">列表相关函数</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152112310.png" alt="" /></p>
+<pre><code class="language-python">a, b = [1,2,3], [5,6]  
+a.append(b)  
+print(a)  
+b.insert(1,100)  
+print(a)  
+a.extend(b)  
+print(a)
+</code></pre>
+<pre><code>[1, 2, 3, [5, 6]]
+[1, 2, 3, [5, 100, 6]]
+[1, 2, 3, [5, 100, 6], 5, 100, 6]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152127820.png" alt="" /></p>
+<pre><code class="language-python">a, b = [1,2,3], [5,6]  
+a.append(b)  
+print(a)  
+b.insert(1,100)  
+print(a)  
+a.extend(b)  
+print(a)  
+a.insert(1,'K')  
+a.insert(3,'K')  
+print(a)  
+a.remove('K')  
+print(a)  
+a.reverse()  
+print(a)  
+print(a.index('K'))  
+try:  
+    print(a.index('m'))  
+except Exception as e:  
+    print(e)
+</code></pre>
+<pre><code>[1, 2, 3, [5, 6]]
+[1, 2, 3, [5, 100, 6]]
+[1, 2, 3, [5, 100, 6], 5, 100, 6]
+[1, 'K', 2, 'K', 3, [5, 100, 6], 5, 100, 6]
+[1, 2, 'K', 3, [5, 100, 6], 5, 100, 6]
+[6, 100, 5, [5, 100, 6], 3, 'K', 2, 1]
+5
+'m' is not in list
+</code></pre>
+<h3 id="map函数"><a class="header" href="#map函数">map函数</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152137180.png" alt="" /></p>
+<pre><code class="language-python">def f(x):  
+    print(x, end=&quot;&quot;)  
+    return x * x  
+a = map(f, [1,2,3])  
+#print(a)  
+#&lt;map object at 0x000002614FD37820&gt;  
+print(list(a))  
+print(tuple(a))  #这里已经没有操作了，故输出()
+a = list(map(lambda x : 2*x, [2,3,4]))  
+print(a)
+</code></pre>
+<pre><code>123[1, 4, 9]
+()
+[4, 6, 8]
+</code></pre>
+<pre><code class="language-python">def f(x):  
+    print(x, end=&quot;&quot;)  
+    return x * x  
+a = map(f, [1,2,3])  
+print(tuple(a))  
+a = list(map(lambda x : 2*x, [2,3,4]))  
+print(a)
+</code></pre>
+<pre><code>123(1, 4, 9)
+[4, 6, 8]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152146789.png" alt="" /></p>
+<pre><code class="language-python">x, y, z = map(int, input().split())  
+print(x, y, z)
+</code></pre>
+<h3 id="filter函数"><a class="header" href="#filter函数">filter函数</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310152148422.png" alt="" /></p>
+<pre><code class="language-python">def f(x):  
+    return x % 2 == 0  
+a = tuple(filter(f, [1,2,3,4,5]))  
+print(a)
+</code></pre>
+<pre><code>(2, 4)
+</code></pre>
+<h3 id="列表生成式"><a class="header" href="#列表生成式">列表生成式</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162113217.png" alt="" /></p>
+<pre><code class="language-python">print([x * x for x in [1,2,3,4,5]])  
+print([m + n for m in 'ABC' for n in 'XYZ'])  
+print([[m + n for m in 'ABC'] for n in 'XYZ'])  
+L = ['Hello','World',18]  
+print([s for s in L if isinstance(s,int)])
+</code></pre>
+<pre><code>[1, 4, 9, 16, 25]
+['AX', 'AY', 'AZ', 'BX', 'BY', 'BZ', 'CX', 'CY', 'CZ']
+[['AX', 'BX', 'CX'], ['AY', 'BY', 'CY'], ['AZ', 'BZ', 'CZ']]
+[18]
+</code></pre>
+<h3 id="二维列表"><a class="header" href="#二维列表">二维列表</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162124231.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162128522.png" alt="" /></p>
+<pre><code class="language-python">matrix = [[x * y for x in range(3)] for y in range(5,9)]  
+print(matrix)  
+matrix = [[0 for i in range(3)] for i in range(3)]  
+print(matrix)
+</code></pre>
+<pre><code>[[0, 5, 10], [0, 6, 12], [0, 7, 14], [0, 8, 16]]
+[[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162129264.png" alt="" /></p>
+<pre><code class="language-python">lst = []  
+for i in range(3):  
+    lst.append([0] * 4)  
+lst[0][0] = lst[2][3] = 100  
+for i in range(3):  
+    for j in range(4):  
+        print(lst[i][j],end=&quot; &quot;)  
+    print('')
+</code></pre>
+<pre><code>100 0 0 0 
+0 0 0 0 
+0 0 0 100 
+</code></pre>
+<p>注：最后用<code>\n</code>的话会存在空一行的现象</p>
+<h3 id="列表的拷贝和转换"><a class="header" href="#列表的拷贝和转换">列表的拷贝和转换</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162137677.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162138145.png" alt="" /></p>
+<p>深拷贝：不仅拷贝指针，还拷贝指针指向的内容</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162140314.png" alt="" /></p>
+<pre><code class="language-python">a = [1, [2]]  
+b = a[:]  
+b.append(10)  
+print(a)  
+print(b)  
+a[1].append(3)  
+print(a)  
+print(b)
+</code></pre>
+<pre><code>[1, [2]]
+[1, [2], 10]
+[1, [2, 3]]
+[1, [2, 3], 10]
+</code></pre>
+<pre><code class="language-python">import copy  
+a = [1, [2]]  
+b = copy.deepcopy(a)  
+b.append(10)  
+print(a)  
+print(b)  
+a[1].append(3)  
+print(a)  
+print(b)
+</code></pre>
+<pre><code>[1, [2]]
+[1, [2], 10]
+[1, [2, 3]]
+[1, [2], 10]
+</code></pre>
+<h3 id="列表和元组互转"><a class="header" href="#列表和元组互转">列表和元组互转</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162143003.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162146894.png" alt="" /></p>
+<pre><code class="language-python">print(list(&quot;Hello&quot;))  
+print(&quot;&quot;.join(['I','love','you']))  
+print(tuple(&quot;Hello&quot;))  
+print(&quot;&quot;.join(('I','love','you')))
+</code></pre>
+<pre><code>['H', 'e', 'l', 'l', 'o']
+Iloveyou
+('H', 'e', 'l', 'l', 'o')
+Iloveyou
+</code></pre>
+<h2 id="元组"><a class="header" href="#元组">元组</a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112109070.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112112264.png" alt="" /></p>
+<pre><code class="language-python">v = &quot;hello&quot;, [1,2,3],[3,2,1]  
+v[1][0] = 'world'  
+print(v)  
+print(len(v))
+</code></pre>
+<pre><code>('hello', ['world', 2, 3], [3, 2, 1])
+3
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112114283.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112118663.png" alt="" /></p>
+<pre><code class="language-python">t = ('hello',)  
+print(t)  
+s = ('hello')  
+print(s)
+</code></pre>
+<pre><code>('hello',)
+hello
+</code></pre>
+<p>没有逗号，算字符串</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112118319.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112119678.png" alt="" /></p>
+<pre><code class="language-python">x = (1,2,3)  
+print(x*3)  
+print(3 in x)  
+for i in (1,2,3):  
+    print(i,end=&quot;&quot;)
+</code></pre>
+<pre><code>(1, 2, 3, 1, 2, 3, 1, 2, 3)
+True
+123
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112126957.png" alt="" /></p>
+<pre><code class="language-python">x = (1,2,3)  
+b = x  
+print(b is x)  
+x += (100,)  
+print(x)  
+print(b)  
+print(b is x)
+</code></pre>
+<pre><code>True
+(1, 2, 3, 100)
+(1, 2, 3)
+False
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310112127102.png" alt="" /></p>
+<pre><code class="language-python">print((1,'a',12) &lt; (2,'b',12)) #True  
+print((2,'a') &gt; ('ab','c')) #TypeError: '&gt;' not supported between instances of 'int' and 'str'
+</code></pre>
+<p>重难点：是否能修改元素内容</p>
+<pre><code class="language-python">a = [1,2,3]  
+print(a)  
+b = (a,a)  
+print(b)  
+c = ([1,2,3],[1,2,3])  
+c[0][1] = 100  
+b[0][1] = 100  
+print(a)  
+print(b)  
+print(c)  
+print(a,b)
+</code></pre>
+<pre><code>[1, 2, 3]
+([1, 2, 3], [1, 2, 3])
+[1, 100, 3]
+([1, 100, 3], [1, 100, 3])
+([1, 100, 3], [1, 2, 3])
+[1, 100, 3] ([1, 100, 3], [1, 100, 3])
+</code></pre>
+<h3 id="实例万年历"><a class="header" href="#实例万年历">实例：万年历</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310211305389.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310211312134.png" alt="" /></p>
+<pre><code class="language-python">monthDays = [-1,31,28,31,30,31,30,31,31,30,31,30,31]  
+days  = 0  
+lst = input().split()  
+year,month,date = int(lst[0]),int(lst[1]),int(lst[2])  
+for y in range(2012,year):  
+    if y % 4 == 0 and y % 100 != 0 or y % 400 == 0:  
+        days += 366  
+    else:  
+        days += 365  
+if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:  
+    monthDays[2] = 29  
+for i in range(1,month):  
+    days += monthDays[i]  
+days += date  
+days -= 22  
+print(days % 7)
+</code></pre>
+<pre><code>2012 01 29
+0
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310211315730.png" alt="" /></p>
+<pre><code class="language-python">lst = input().split()  
+year,month,date = int(lst[0]),int(lst[1]),int(lst[2])  
+days  = 0  
+days += (year - 2012) * 365  
+if year &gt; 2012:  
+    days += (year - 2012 - 1) // 4 + 1  
+    days -= (year - 2012 - 1) // 100 - (year - 2000 - 1) // 400  
+days += date  
+days -= 22  
+print(days % 7)
+</code></pre>
+<pre><code>2023 10 21
+4017
+6
+</code></pre>
+<p>西元2023年10月21日为星期六</p>
+<h3 id="元组生成式"><a class="header" href="#元组生成式">元组生成式</a></h3>
+<pre><code class="language-python">print(tuple(x * x for x in [1,2,3,4,5]))  
+print(x * x for x in [1,2,3,4,5])
+</code></pre>
+<pre><code>(1, 4, 9, 16, 25)
+&lt;generator object &lt;genexpr&gt; at 0x0000022212749A10&gt;
+</code></pre>
+<h3 id="定义二维元组"><a class="header" href="#定义二维元组">定义二维元组</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310162133676.png" alt="" /></p>
+<pre><code class="language-python">matrix = tuple(tuple(0 for i in range(3)) for i in range(3))  
+print(matrix)
+</code></pre>
+<pre><code>((0, 0, 0), (0, 0, 0), (0, 0, 0))
+</code></pre>
+<h2 id="字典"><a class="header" href="#字典">字典</a></h2>
+<h3 id="字典的基本概念"><a class="header" href="#字典的基本概念">字典的基本概念</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310191950654.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192000796.png" alt="" /></p>
+<pre><code class="language-python">dt = {'Mike':18, 'Jack':19, 209.1:1, 288:2, (1, 2, 3):[4,5]}  
+print(dt)  
+print(dt['Jack'])  
+print(dt[288])  
+print(dt[(1,2,3)])  
+print(dt['c'])  
+dt['Mike'] = 22
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192002111.png" alt="" /></p>
+<pre><code class="language-python">dt = {'Mike':18, 'Jack':19, 209.1:1, 288:2, (1, 2, 3):[4,5]}  
+dt['School'] = 'PKU'  
+print(dt)  
+del dt['Mike']  
+print(dt)
+</code></pre>
+<pre><code>{'Mike': 18, 'Jack': 19, 209.1: 1, 288: 2, (1, 2, 3): [4, 5], 'School': 'PKU'}
+{'Jack': 19, 209.1: 1, 288: 2, (1, 2, 3): [4, 5], 'School': 'PKU'}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192005624.png" alt="" /></p>
+<pre><code class="language-python">scope = {}  
+scope['a'] = 3  
+scope['b'] = 4  
+print(scope)  
+print('b' in scope)  
+scope['k'] = scope.get('k',0) + 1  
+print(scope['k'])  
+scope['k'] = scope.get('k',0) + 1  
+print(scope['k'])
+</code></pre>
+<pre><code>{'a': 3, 'b': 4}
+True
+1
+2
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192007208.png" alt="" /></p>
+<pre><code class="language-python">a = (1,2,3)  
+b = (1,2,3)  
+d = {a:80, b:70, (1,2,3):80, (1,2,3):50}  
+print(d[a])  
+print(d[b])  
+print((1,2,3))  
+for x in d.keys():  
+    print(x)
+</code></pre>
+<pre><code>50
+50
+(1, 2, 3)
+(1, 2, 3)
+</code></pre>
+<p>这里面只有一个键值对(1,2,3):50</p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192012275.png" alt="" /></p>
+<pre><code class="language-python">items = [('name','Gumby'),('age',42)]  
+dt = dict(items)  
+print(dt)  
+d = dict(name='Gumby',age=42,height=1.76)  
+print(d)
+</code></pre>
+<pre><code>{'name': 'Gumby', 'age': 42}
+{'name': 'Gumby', 'age': 42, 'height': 1.76}
+</code></pre>
+<p>Python字典在3.5及之前版本无序，从3.6开始有序即按照自定义顺序确定字典顺序</p>
+<h3 id="字典相关函数"><a class="header" href="#字典相关函数">字典相关函数</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192017153.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192022324.png" alt="" /></p>
+<pre><code class="language-python">items = [('name','Gumby'),('age',42),('GPA',4.0)]  
+dt = dict(items)  
+print(dt)  
+if 'age' in dt.keys():  
+    print(dt['age'])  
+for x in dt.items():  
+    print(x,end=&quot;,&quot;)  
+print(&quot;&quot;)  
+for x in dt.items():  
+    print(x[0],end=&quot;,&quot;)  
+print(&quot;&quot;)  
+for x in dt.items():  
+    print(x[1],end=&quot;,&quot;)  
+print(&quot;&quot;)  
+for k,v in dt.items():  
+    print(k,v,end=&quot;,&quot;)  
+print(&quot;&quot;)  
+for x in dt.keys():  
+    print(x,end=&quot;,&quot;)  
+print(&quot;&quot;)  
+for x in dt.values():  
+    print(x,end=&quot;,&quot;)
+</code></pre>
+<pre><code>{'name': 'Gumby', 'age': 42, 'GPA': 4.0}
+42
+('name', 'Gumby'),('age', 42),('GPA', 4.0),
+name,age,GPA,
+Gumby,42,4.0,
+name Gumby,age 42,GPA 4.0,
+name,age,GPA,
+Gumby,42,4.0,
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192035099.png" alt="" /></p>
+<pre><code class="language-python">x = {'username':'admin',1978:[1,2,3]}  
+y = x.copy()  
+print(x)  
+print(y)  
+y['username'] = 'mlk'  
+y[1978].remove(2)  
+print(y)  
+print(x)  
+x.pop('username')  
+print(x)  
+print(y)  
+x.clear()  
+print(x)  
+print(y)
+</code></pre>
+<pre><code>{'username': 'admin', 1978: [1, 2, 3]}
+{'username': 'admin', 1978: [1, 2, 3]}
+{'username': 'mlk', 1978: [1, 3]}
+{'username': 'admin', 1978: [1, 3]}
+{1978: [1, 3]}
+{'username': 'mlk', 1978: [1, 3]}
+{}
+{'username': 'mlk', 1978: [1, 3]}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192036569.png" alt="" /></p>
+<pre><code class="language-python">import copy  
+x = {'username':'admin','machines':['foo','bar','baz']}  
+y = copy.deepcopy(x)  
+print(x)  
+print(y)  
+y['username'] = 'mlk'  
+y['machines'].remove('bar')  
+print(y)  
+print(x)
+</code></pre>
+<pre><code>{'username': 'admin', 'machines': ['foo', 'bar', 'baz']}
+{'username': 'admin', 'machines': ['foo', 'bar', 'baz']}
+{'username': 'mlk', 'machines': ['foo', 'baz']}
+{'username': 'admin', 'machines': ['foo', 'bar', 'baz']}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192040331.png" alt="" /></p>
+<h3 id="字典例题词频统计"><a class="header" href="#字典例题词频统计">字典例题：词频统计</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192043219.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192053010.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192053614.png" alt="" /></p>
+<pre><code class="language-python">dt = {}  
+while True:  
+    try:  
+        wd = input()  
+        dt[wd] = dt.get(wd,0) + 1  
+    except:  
+        break  
+ls = []  
+for x in dt.items():  
+    ls.append(x)  
+ls.sort(key = lambda x:(-x[1],x[0]))  
+for x in ls:  
+    print(x[1],x[0])
+</code></pre>
+<pre><code>about
+zoo
+take
+take
+about
+^D
+2 about
+2 take
+1 zoo
+</code></pre>
+<h2 id="集合"><a class="header" href="#集合">集合</a></h2>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192106450.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192110985.png" alt="" /></p>
+<pre><code class="language-python">empty_set = {}  
+print(type(empty_set))  
+print(set({}))  
+print(set([]))
+</code></pre>
+<pre><code>&lt;class 'dict'&gt;
+set()
+set()
+</code></pre>
+<p><strong>集合具有无序性、确定性、互异性三种性质</strong></p>
+<pre><code class="language-python">a = {1,2,2,&quot;ok&quot;,(1,3)}  
+print(a)  
+b = (3,4)  
+c = (3,4)  
+a = set((1,2,&quot;ok&quot;,3,b,c))  
+for x in a:  
+    print(x,end=&quot; &quot;)  
+print(&quot;&quot;)  
+a = set(&quot;abc&quot;)  
+print(a)  
+a = set({1:2,'ok':3,(3,4):4})  
+print(a)
+</code></pre>
+<pre><code>{1, 2, (1, 3), 'ok'}
+1 2 3 (3, 4) ok 
+{'b', 'a', 'c'}
+{1, (3, 4), 'ok'}
+</code></pre>
+<pre><code class="language-python">a = set({1:2,'ok':3,(3,4):4})  
+print(a[2])
+</code></pre>
+<p>这里会报错。</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;E:\python\test.py&quot;, line 2, in &lt;module&gt;
+    print(a[2])
+TypeError: 'set' object is not subscriptable
+</code></pre>
+<h3 id="集合常用函数"><a class="header" href="#集合常用函数">集合常用函数</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192120312.png" alt="" /></p>
+<h3 id="集合运算"><a class="header" href="#集合运算">集合运算</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192122994.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192123430.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192128323.png" alt="" /></p>
+<pre><code class="language-python">a = set([])  
+b = set({})  
+a.add(1)  
+b.update([2,3,4])  
+a.update([2,3,'b'])  
+print(a)  
+print(b)  
+print(a|b)  
+print(a&amp;b)  
+print(a-b)  
+a -= b  
+print(a)  
+print(b)
+</code></pre>
+<pre><code>{1, 2, 3, 'b'}
+{2, 3, 4}
+{1, 2, 3, 4, 'b'}
+{2, 3}
+{1, 'b'}
+{1, 'b'}
+{2, 3, 4}
+</code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192134655.png" alt="" /></p>
+<pre><code class="language-python">a = {1, 'b'}  
+a ^= {544,4,3}  
+print(a)  
+a.update(&quot;take&quot;)  
+print(a)  
+print(544 in a)  
+a.remove(544)  
+a = {1,2,3}  
+b = {2,3}  
+print(a&gt;b)  
+print(a&gt;=b)  
+print(b&gt;a)
+</code></pre>
+<pre><code>{544, 1, 3, 4, 'b'}
+{544, 1, 3, 4, 'a', 't', 'b', 'e', 'k'}
+True
+True
+True
+False
+</code></pre>
+<pre><code class="language-python">a = input().split()
+b = input().split()
+ls = list(set(a).union(set(b)))
+a = [int(x) for x in a]
+b = [int(x) for x in b]
+print(set(a)&amp;set(b))
+ls = [int(x) for x in ls]
+ls.sort()
+print(set(ls))
+</code></pre>
+<h3 id="集合例题统计不同单词数量"><a class="header" href="#集合例题统计不同单词数量">集合例题：统计不同单词数量</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192147181.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310192147616.png" alt="" /></p>
+<pre><code class="language-python">words = set([])  
+while True:  
+    try:  
+        wd = input()  
+        if not wd in words:  #这里写not wd in和写wd not in都行
+            words.add(wd)  
+    except:  
+        break  
+print(len(words))
+</code></pre>
+<pre><code>about
+zoo
+take
+take
+about
+^D
+3
+</code></pre>
+<p>自己写的代码如下：</p>
+<pre><code class="language-python">result = set([])  
+while True:  
+    try:  
+        s = input()  
+        print((s))  
+        print(tuple(s))  
+        result.add(s)  
+    except:  
+        break  
+print(len(result))
+</code></pre>
+<pre><code>about
+about
+('a', 'b', 'o', 'u', 't')
+zoo
+zoo
+('z', 'o', 'o')
+about
+about
+('a', 'b', 'o', 'u', 't')
+take
+take
+('t', 'a', 'k', 'e')
+take
+take
+('t', 'a', 'k', 'e')
+^D
+3
+</code></pre>
+<pre><code class="language-python">result = set([])  
+while True:  
+    try:  
+        s = input()  
+        result.update((s))  
+    except:  
+        break  
+print(len(result))
+</code></pre>
+<pre><code class="language-python">result = set([])  
+while True:  
+    try:  
+        s = input()  
+        print((s))  
+        print(tuple(s))  
+        result.update((s))  
+    except:  
+        break  
+print(len(result))
+</code></pre>
+<pre><code>about
+about
+('a', 'b', 'o', 'u', 't')
+take
+take
+('t', 'a', 'k', 'e')
+zoo
+zoo
+('z', 'o', 'o')
+take
+take
+('t', 'a', 'k', 'e')
+about
+about
+('a', 'b', 'o', 'u', 't')
+^D
+8
+</code></pre>
+<h3 id="程序或算法的时间复杂度"><a class="header" href="#程序或算法的时间复杂度">程序或算法的时间复杂度</a></h3>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310212136119.png" alt="" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/Rosefinch-Midsummer/MyImagesHost01/img/202310212137697.png" alt="" /></p>
+<h3 id="实例找出出现次数最少的数"><a class="header" href="#实例找出出现次数最少的数">实例：找出出现次数最少的数</a></h3>
+<pre><code class="language-python">dt = {}  
+while True:  
+    try:  
+        n = int(input())  
+        dt[n] = dt.get(n,0) + 1  
+    except:  
+        break  
+min_value = 1000000  
+for x in dt.values():  
+    if x &lt; min_value:  
+        min_value = x  
+for k,v in dt.items():  
+    if v == min_value:  
+        print(k,v)  
+        break
+</code></pre>
+<pre><code>200
+18
+9
+8
+70
+70
+6
+200
+18
+^D
+9 1
+</code></pre>
+<p>注：我写的代码比郭老师写的代码要简洁，哦耶！</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="分支语句理论"><a class="header" href="#分支语句理论">分支语句理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="循环语句理论"><a class="header" href="#循环语句理论">循环语句理论</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="异常处理理论"><a class="header" href="#异常处理理论">异常处理理论</a></h1>
